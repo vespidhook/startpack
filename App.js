@@ -15,6 +15,9 @@ import {
 
 import User from "./components/User";
 
+import * as Animatable from 'react-native-animatable';
+
+
 const { width } = Dimensions.get("window");
 
 export default class App extends Component {
@@ -27,46 +30,39 @@ export default class App extends Component {
     users: [
       {
         id: 1,
-        name: "Diego Fernandes",
-        description: "Head de programação!",
-        avatar: "https://avatars0.githubusercontent.com/u/2254731?s=460&v=4",
+        name: "Bruno Alves",
+        description: "Estudante de programação!",
+        avatar: "https://avatars3.githubusercontent.com/u/43477835?s=460&v=4",
         thumbnail:
-          "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=400&q=80",
+          "https://avatars3.githubusercontent.com/u/43477835?s=460&v=4",
         likes: 200,
         color: "#57BCBC"
       },
       {
         id: 2,
-        name: "Robson Marques",
-        description: "Head de empreendedorismo!",
-        avatar: "https://avatars2.githubusercontent.com/u/861751?s=460&v=4",
+        name: "João Ferreira",
+        description: "O cara da telefonia",
+        avatar: "https://scontent-gig2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160a/p160x160/1012539_401519486660371_1174559786_n.jpg?_nc_cat=101&_nc_oc=AQkvKHjRYaUj5eWySomp3vVnUtpn6JDJV7FPz6TcrRj-6ANkObL2IKiF816fqgSquyw&_nc_ht=scontent-gig2-1.xx&oh=9e29e203b3944b43872dbbc4a2c49556&oe=5DED8843",
         thumbnail:
-          "https://images.unsplash.com/photo-1490633874781-1c63cc424610?auto=format&fit=crop&w=400&q=80",
+          "https://scontent-gig2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160a/p160x160/1012539_401519486660371_1174559786_n.jpg?_nc_cat=101&_nc_oc=AQkvKHjRYaUj5eWySomp3vVnUtpn6JDJV7FPz6TcrRj-6ANkObL2IKiF816fqgSquyw&_nc_ht=scontent-gig2-1.xx&oh=9e29e203b3944b43872dbbc4a2c49556&oe=5DED8843",
         likes: 350,
         color: "#E75A63"
       },
       {
         id: 3,
-        name: "Cleiton Souza",
-        description: "Head de mindset!",
+        name: "Raphael Carvalho",
+        description: "Piloto",
         avatar: "https://avatars0.githubusercontent.com/u/4669899?s=460&v=4",
         thumbnail:
-          "https://images.unsplash.com/photo-1506440905961-0ab11f2ed5bc?auto=format&fit=crop&w=400&q=80",
+          "https://scontent-gig2-1.xx.fbcdn.net/v/t1.0-1/p160x160/38260596_2054329547920021_7529482238627414016_n.jpg?_nc_cat=100&_nc_oc=AQkq3wKC5u_AL4Eg19m1179eSVxgD0hHmzefs2eB-AFwsrhVD3kaGjL4govAfVcbbkU&_nc_ht=scontent-gig2-1.xx&oh=001e528778b76166709708f428e3ea23&oe=5DA2EE57",
         likes: 250,
         color: "#2E93E5"
       },
-      {
-        id: 4,
-        name: "Robson Marques",
-        description: "Head de empreendedorismo!",
-        avatar: "https://avatars2.githubusercontent.com/u/861751?s=460&v=4",
-        thumbnail:
-          "https://images.unsplash.com/photo-1490633874781-1c63cc424610?auto=format&fit=crop&w=400&q=80",
-        likes: 350,
-        color: "#E75A63"
-      }
+      
     ]
   };
+
+  
 
   selectUser = (user) => {
     this.setState({ userSelected: user });
@@ -178,8 +174,11 @@ export default class App extends Component {
             }
             ]}
             >
-            GoNative
+            Animações com React Native
         </Animated.Text>
+        
+
+        
 
         <Animated.Text 
           style={[
@@ -197,6 +196,16 @@ export default class App extends Component {
             >
             { userSelected ? userSelected.name : null }
         </Animated.Text>
+
+        <Animatable.Text animation="zoomInUp">Praticando</Animatable.Text>
+
+        <Animatable.Text animation="slideInDown" iterationCount={10} direction="alternate">Animações com React Native</Animatable.Text>
+
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ textAlign: 'center' }}>REACT NATIVE</Animatable.Text>
+
+        <TouchableOpacity onPress={() => this.setState({fontSize: (this.state.fontSize || 10) + 5 })}>
+        <Animatable.Text transition="fontSize" style={{fontSize: this.state.fontSize || 10}}>touch me</Animatable.Text>
+        </TouchableOpacity>
 
 
         </Animated.View>
